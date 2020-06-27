@@ -24,12 +24,13 @@ namespace IdentityServer
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = _config.GetConnectionString("DefaultConnection");
+            var connectionString = _config.GetConnectionString("mysql");
 
             services.AddDbContext<AppDbContext>(config =>
             {
-                config.UseSqlServer(connectionString);
+                //config.UseSqlServer(connectionString);
                 //config.UseInMemoryDatabase("Memory");
+                config.UseMySql(connectionString);
             });
 
             // AddIdentity registers the services
