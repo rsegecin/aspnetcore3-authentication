@@ -69,7 +69,7 @@ namespace IdentityServer
                         sql => sql.MigrationsAssembly(assembly));
                 })
                 //.AddSigningCredential(certificate);
-                //.AddInMemoryApiResources(Configuration.GetApis())
+                .AddInMemoryApiScopes(Configuration.GetApis())
                 //.AddInMemoryIdentityResources(Configuration.GetIdentityResources())
                 //.AddInMemoryClients(Configuration.GetClients())
                 .AddDeveloperSigningCredential();

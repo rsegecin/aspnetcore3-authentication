@@ -22,10 +22,12 @@ namespace IdentityServer
                 }
             };
 
-        public static IEnumerable<ApiResource> GetApis() =>
-            new List<ApiResource> {
-                new ApiResource("ApiOne"),
-                new ApiResource("ApiTwo", new string[] { "rc.api.garndma" }),
+        public static IEnumerable<ApiScope> GetApis() =>
+            new List<ApiScope> {
+                new ApiScope("ApiOne"),
+                new ApiScope("ApiTwo"),
+                new ApiScope("openid"),
+                new ApiScope("rc.scope"),
             };
 
         public static IEnumerable<Client> GetClients() =>

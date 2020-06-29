@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ApiOne
 {
@@ -12,11 +13,12 @@ namespace ApiOne
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", config =>
                 {
-                    config.Authority = "http://localhost:5000/";
+                    config.Authority = "https://localhost:44305/";
 
-                    config.Audience = "ApiOne";
-
-                    config.RequireHttpsMetadata = false;
+                    config.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateAudience = false
+                    };
                 });
 
             services.AddCors(confg =>

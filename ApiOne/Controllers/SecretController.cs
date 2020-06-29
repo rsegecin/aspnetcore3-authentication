@@ -10,8 +10,14 @@ namespace ApiOne.Controllers
         [Authorize]
         public string Index()
         {
-            var claims = User.Claims.ToList();
-            return "secret message from ApiOne";
+            string claims = "";
+
+            foreach (var item in User.Claims)
+            {
+                claims += item.Type + " " + item.Value;
+            }
+
+            return "secret message from ApiOne\r\n\r\n" +  claims;
         }
     }
 }
